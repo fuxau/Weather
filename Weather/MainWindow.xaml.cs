@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
@@ -6,26 +7,35 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using weather;
+using static System.Net.WebRequestMethods;
 
 namespace Weather
 {
     public partial class MainWindow : Window
     {
+        private const string CitiesFilePath = "ville.txt";
         public MainWindow()
         {
             InitializeComponent();
             PopulateCityComboBox();
             GetWeatherDetails("Annecy");
+
         }
 
         private void PopulateCityComboBox()
         {
-            cityComboBox.Items.Add("Annecy");
-            cityComboBox.Items.Add("Seynod");
-            cityComboBox.Items.Add("Ales");
-            cityComboBox.Items.Add("Moutier");
-            cityComboBox.Items.Add("Chambery");
-            cityComboBox.SelectedIndex = 0; // Sélection par défaut
+            if (System.IO.File.Exists("../../ville.txt"))
+            {
+                var ville = System.IO.File.ReadAllLines("../../ville.txt");
+
+                foreach (var city in ville)
+                {
+                    if (!string.IsNullOrWhiteSpace(city))
+                    {
+                        cityComboBox.Items.Add(city.Trim());
+                    }
+                }
+            }
         }
 
         // Gestionnaire d'événement pour le changement de sélection dans la ComboBox
