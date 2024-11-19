@@ -1,0 +1,70 @@
+﻿<Window x:Class="Weather.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Weather Forecast" Height="480" Width="800">
+    <Grid Background="#003D5B">
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+            <Label x:Name="NameLabel" Content=""  FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Label x:Name="tempLabel" Content="" FontSize="36" FontWeight="Bold" Foreground="White" />
+                <Image x:Name="weatherIcon"/>
+            </StackPanel>
+        </StackPanel>
+
+        
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,166,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            
+            <StackPanel Grid.Row="0" Grid.Column="0" Background="#157A91" Margin="5" >
+                <Label x:Name="dateLabel" Content="" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Label x:Name="temp1Label" Content="" FontSize="14" Foreground="White" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <Label x:Name="conditionLabel" Content="" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
+                <Image x:Name="weather2Icon"/>
+            </StackPanel>
+
+            
+            <StackPanel Grid.Row="0" Grid.Column="1" Background="#157A91" Margin="5" >
+                <Label x:Name="date1Label" Content="" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Label x:Name="temp2Label" Content="" FontSize="14" Foreground="White" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <Label x:Name="condition2Label" Content="" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
+                <Image x:Name="weather3Icon"/>
+            </StackPanel>
+
+            
+            <StackPanel Grid.Row="0" Grid.Column="2" Background="#157A91" Margin="5" >
+                <Label x:Name="date2Label" Content="" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Label x:Name="temp3Label" Content="" FontSize="14" Foreground="White" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <Label x:Name="condition3Label" Content="" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
+                <Image x:Name="weather4Icon"/>
+            </StackPanel>
+
+            
+            <StackPanel Grid.Row="1" Grid.Column="0" Background="#157A91" Margin="5" >
+                <Label x:Name="date3Label" Content="" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Label x:Name="temp4Label" Content="" FontSize="14" Foreground="White" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <Label x:Name="condition4Label" Content="" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
+                <Image x:Name="weather5Icon"/>
+            </StackPanel>
+
+            
+            <StackPanel Grid.Row="1" Grid.Column="1" Background="#157A91" Margin="5" >
+                <Label x:Name="date4Label" Content="" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Label x:Name="temp5Label" Content="" FontSize="14" Foreground="White" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <Label x:Name="condition5Label" Content="" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
+                <Image x:Name="weather6Icon"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
