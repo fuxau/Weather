@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using weather;
@@ -13,13 +14,34 @@ namespace Weather
         public MainWindow()
         {
             InitializeComponent();
-            GetWeatherDetails();
+            PopulateCityComboBox();
+            GetWeatherDetails("Annecy");
+        }
+
+        private void PopulateCityComboBox()
+        {
+            cityComboBox.Items.Add("Annecy");
+            cityComboBox.Items.Add("Seynod");
+            cityComboBox.Items.Add("Ales");
+            cityComboBox.Items.Add("Moutier");
+            cityComboBox.Items.Add("Chambery");
+            cityComboBox.SelectedIndex = 0; // Sélection par défaut
+        }
+
+        // Gestionnaire d'événement pour le changement de sélection dans la ComboBox
+        private void cityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedCity = cityComboBox.SelectedItem as string;
+            if (!string.IsNullOrEmpty(selectedCity))
+            {
+                GetWeatherDetails(selectedCity);
+            }
         }
 
         // Méthode pour obtenir les détails météorologiques et les afficher
-        private async Task GetWeatherDetails()
+        private async Task GetWeatherDetails(string city)
         {
-            string result = await GetWeatherDataAsync();
+            string result = await GetWeatherDataAsync(city);
             if (!string.IsNullOrEmpty(result))
             {
                 // Désérialisation de la réponse JSON en objet WeatherRoot avec Newtonsoft.Json
@@ -82,12 +104,13 @@ namespace Weather
             }
         }
 
+
         // Méthode asynchrone pour appeler l'API météo
-        private async Task<string> GetWeatherDataAsync()
+        private async Task<string> GetWeatherDataAsync(string city)
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(
-                "https://www.prevision-meteo.ch/services/json/Annecy");
+                $"https://www.prevision-meteo.ch/services/json/{city}");
 
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
